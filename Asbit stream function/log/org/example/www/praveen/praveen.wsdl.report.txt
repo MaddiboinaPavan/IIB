@@ -1,0 +1,22 @@
+
+
+Importing file: C:\Users\Administrator\Music\PraveenWorkSpace\praveen\praveen\praveen.wsdl
+
+The WSDL import will proceed with bindings praveenSOAP.
+Creating wsdl schema document for file:///C:/Users/Administrator/Music/PraveenWorkSpace/praveen/praveen/praveen.wsdl.
+Parsing wsdl binding {http://www.example.org/praveen/}praveenSOAP.
+Parsing wsdl binding input NewOperation.
+Parsing wsdl binding output NewOperation.
+Processing doc style for operation NewOperation.
+Populating WSDL schema praveen.xsd.
+Creating file praveen.xsd in the workspace.
+Creating file praveen_InlineSchema1.xsd in the workspace.
+Copying source WSDL praveen.wsdl to praveen.wsdl.
+
+Elapsed time processing this message definition file: 0.23 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
