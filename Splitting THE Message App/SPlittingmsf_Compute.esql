@@ -1,0 +1,63 @@
+
+
+CREATE COMPUTE MODULE SPlittingmsf_Compute
+CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+--		SET OutputRoot.XMLNSC.Data ='001';
+--		SET OutputRoot.XMLNSC.Data ='BERLO';
+--		SET OutputRoot.XMLNSC.Data ='BET';
+--		SET OutputRoot.XMLNSC.Data ='BRANCH';
+--		SET OutputRoot.XMLNSC.Data ='GARAD';
+--		SET OutputRoot.XMLNSC.Data ='BUILDINGDEBREZEIT';
+----		SET OutputRoot.XMLNSC.Data ='001';
+--	 DECLARE P INTEGER; 
+--	 DECLARE Idx INTEGER 1; 
+--	DECLARE S CHARACTER;
+--	DECLARE Delim REFERENCE TO InputRoot.BLOB;
+--	--DECLARE Split CHARACTER;
+--
+--    SET Environment.Split = NULL; 
+----DECLARE var REFERENCE TO 
+--   REPEAT 
+--      SET P = POSITION(Delim IN S); 
+--      IF P = 0 THEN 
+--         SET Environment.Split.Array = S; 
+--      ELSE 
+--         SET Environment.Split.Array = LEFT(S, P - 1); 
+--         SET S = SUBSTRING(S FROM P + LENGTH(Delim)); 
+--         SET Idx = Idx + 1; 
+--      END IF; 
+--    UNTIL P = 0    
+--  END REPEAT;    
+--  
+--		--CREATE PROCEDURE Split (IN S CHARACTER, IN Env REFERENCE,IN Delim CHARACTER);
+--END MODULE;
+
+     DECLARE i INTEGER 1;
+   DECLARE j INTEGER 1;
+    DECLARE var1,var2,var3,var4 CHARACTER;
+     DECLARE var BLOB InputRoot.BLOB.BLOB;
+   SET var1 = CAST(var AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId ENCODING InputRoot.Properties.Encoding);
+  x:WHILE var1 <> '' DO
+
+    SET var3 = SUBSTRING(var1 BEFORE '');
+  SET var4 = SUBSTRING (var1 AFTER '');
+
+
+     if var3 = '' THEN 
+	 SET OutputRoot.XMLNSC.Root.value[i] = var1;
+    END IF;
+
+    IF  var3 <> '' THEN
+	SET OutputRoot.XMLNSC.Root.value[i] = var3;
+	
+   END IF;
+	SET var1 = var4;
+	SET i = i+1;
+   END WHILE;
+ END;
+   END MODULE;
