@@ -1,0 +1,22 @@
+
+
+CREATE COMPUTE MODULE POWERBACKEND_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		   CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+	
+	DECLARE hrBlob BLOB ASBITSTREAM(InputRoot.XMLNSC ENCODING InputRoot.Properties.Encoding CCSID InputRoot.Properties.CodedCharSetId);
+	DECLARE hrChar CHARACTER CAST( hrBlob AS CHARACTER CCSID 1208);
+	LOG EVENT SEVERITY 1 CATALOG 'BIPmsgs' MESSAGE 5921 VALUES ('45445184281875484','HostRequest' || hrChar,ApplicationLabel,MessageFlowLabel,CURRENT_TIMESTAMP);
+	SET OutputRoot.XMLNSC.Customer.Status = 'Success';
+	SET OutputRoot.XMLNSC.Customer.Description ='Allow to processed further';
+	DECLARE hResBlob BLOB ASBITSTREAM(OutputRoot.XMLNSC ENCODING 546 CCSID 1208);
+	DECLARE hResChar CHARACTER CAST(hResBlob AS CHARACTER);
+	LOG EVENT SEVERITY 1 CATALOG 'BIPmsg' MESSAGE 5921 VALUES ('5465454515458','HostResponse'||hResChar,ApplicationLabel,MessageFlowLabel,CURRENT_TIMESTAMP);
+		
+	END;
+END MODULE;
