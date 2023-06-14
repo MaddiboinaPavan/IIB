@@ -1,0 +1,22 @@
+
+
+CREATE COMPUTE MODULE JSONMSF_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+CREATE FIELD OutputRoot.JSON.Data.Root.Subjects IDENTITY (JSON.Array)Subjects;
+DECLARE X INTEGER 1;
+DECLARE Y INTEGER;
+SET Y = CARDINALITY(InputRoot.XMLNSC.Root.Subjects.Subject[]);
+WHILE X<=Y DO
+CREATE FIELD OutputRoot.JSON.Data.Root.Subjects.Item[X];
+SET OutputRoot.JSON.Data.Root.Subjects.Item[X] = InputRoot.XMLNSC.Root.Subjects.Subject[X];
+SET X = X+1;
+End WHILE;	
+		
+		
+		
+		RETURN TRUE;
+	END;
+
+	
+END MODULE;
