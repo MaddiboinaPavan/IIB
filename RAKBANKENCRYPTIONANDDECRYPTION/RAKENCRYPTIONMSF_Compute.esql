@@ -1,0 +1,54 @@
+
+
+CREATE COMPUTE MODULE RAKENCRYPTIONMSF_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		  CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		
+		
+		DECLARE request CHARACTER CAST(ASBITSTREAM(InputRoot.JSON.Data CCSID InputRoot.Properties.CodedCharSetId) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId ENCODING InputRoot.Properties.Encoding);
+		DECLARE encry,decry CHARACTER ;
+		
+		CALL encryption (request, 'KEY')INTO encry;
+		
+		SET OutputRoot.JSON.Data.Response.Encrypted=encry;
+		
+		CALL decryption(encry, 'KEY')INTO decry;
+		
+		SET OutputRoot.JSON.Data.Response.Decrypted=decry;
+		
+		DECLARE Inref REFERENCE TO InputRoot.JSON.Data.Request;
+		DECLARE Result ROW;
+		DECLARE Query CHARACTER;
+		SET Query = 'SELECT * FROM RANKBANK_OTHERTRANSFERTABLE WHERE SERVICE_ID = ?';
+		SET Result.Data[] = PASSTHRU(Query VALUES(Inref.Service_ID));
+		
+		DECLARE SERVICE_NAME, METHOD CHARACTER;
+ 		SET SERVICE_NAME = Result.Data.SERVICE_ID;
+ 		SET METHOD = Result.Data.METHOD;
+		
+		IF Inref.Service_ID = SERVICE_NAME  THEN	
+			SET OutputLocalEnvironment.Destination.REST.Request.Operation = METHOD;
+		ELSE
+			SET OutputRoot.JSON.Data.EXCEPTION = 'Invalid Service Name';
+		END IF;	
+		
+	END;
+END MODULE;
+	CREATE PROCEDURE Encryption (IN StringToEncrypt CHARACTER,IN passwd CHARACTER )
+RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "ENCE_DECE.EncryptionDecryption.Encryption";
+
+
+CREATE PROCEDURE Decryption (IN StringToDecrypt CHARACTER,IN passwd CHARACTER )
+RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "ENCE_DECE.EncryptionDecryption.Decryption";
+	
+	
