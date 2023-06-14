@@ -1,0 +1,85 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "USINGRESTAPICURDOPERATIONSREST",
+    "version" : "1.0.0",
+    "description" : "USINGRESTAPICURDOPERATIONSREST"
+  },
+  "paths" : {
+    "/EMPINFORMATION" : {
+      "get" : {
+        "operationId" : "getEMPINFORMATION",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve EMPINFORMATION"
+      },
+      "post" : {
+        "operationId" : "postEMPINFORMATION",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a EMPINFORMATION",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      },
+      "put" : {
+        "operationId" : "putEMPINFORMATION",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Update EMPINFORMATION",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/usingrestapicurdoperationsrest/v1",
+  "definitions" : {
+    "EMPLOYEE" : {
+      "type" : "object",
+      "properties" : {
+        "NAME" : {
+          "type" : "string"
+        },
+        "ID" : {
+          "type" : "string"
+        },
+        "Salary" : {
+          "type" : "string"
+        },
+        "Degination" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
