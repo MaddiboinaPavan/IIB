@@ -1,0 +1,43 @@
+
+
+CREATE COMPUTE MODULE postGETTHEDATAOTHERBANKTRANSFER_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		   CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+		DECLARE service CHARACTER FIELDNAME (InputRoot.JSON.Data.[>]);
+		DECLARE query CHARACTER 'SELECT * FROM RANKBANK_OTHERTRANSFERTABLE WHERE SERVICE_NAME =?';
+	    SET Environment.Variable.res = PASSTHRU(query.praveen VALUES(service));
+	    
+	    
+	    DECLARE url CHARACTER Environment.Variable.res.URL;
+		DECLARE APP_NAME CHARACTER  Environment.Variable.res.SERVICE_NAME;
+		
+		IF service = APP_NAME THEN
+			SET OutputLocalEnvironment.Destination.HTTP.RequestURL = url;
+		--SET OutputLocalEnvironment.Destination.HTTP.RequestURL = appurl;	    
+		
+		ELSE
+			
+			--SET OutputRoot.JSON.Data.Result = 'NO URL FOUND';
+			SET OutputRoot.JSON.Data.Result = 'No URL MATCHED';
+			
+		END IF;
+		
+	END;
+END MODULE;
