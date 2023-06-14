@@ -1,0 +1,16 @@
+
+
+CREATE COMPUTE MODULE TCPMSF_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+	        CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		
+		DECLARE var REFERENCE TO InputRoot.XMLNSC.Name;
+		SET OutputRoot.JSON.Data.Result = SUBSTRING(var FROM 3 FOR 3);
+	
+	END;
+END MODULE;
