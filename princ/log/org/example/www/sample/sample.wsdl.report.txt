@@ -1,0 +1,22 @@
+
+
+Importing file: C:\Users\Administrator\Music\PraveenWorkSpace\princ\sample.wsdl
+
+The WSDL import will proceed with bindings sampleSOAP.
+Creating wsdl schema document for file:///C:/Users/Administrator/Music/PraveenWorkSpace/princ/sample.wsdl.
+Parsing wsdl binding {http://www.example.org/sample/}sampleSOAP.
+Parsing wsdl binding input NewOperation.
+Parsing wsdl binding output NewOperation.
+Processing doc style for operation NewOperation.
+Populating WSDL schema sample.xsd.
+Creating file sample.xsd in the workspace.
+Creating file sample_InlineSchema1.xsd in the workspace.
+Copying source WSDL sample.wsdl to sample.wsdl.
+
+Elapsed time processing this message definition file: 0.251 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
