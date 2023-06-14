@@ -1,0 +1,15 @@
+
+
+CREATE COMPUTE MODULE STRINGMANUPULATEFUNCTIONMSF_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.EMP;
+		SET OutputRoot.JSON.Data.Result = COALESCE(inref,'hey there');
+		SET OutputRoot.JSON.Data.Result = ENDSWITH (inref,'HelloWorld');
+	END;
+END MODULE;
