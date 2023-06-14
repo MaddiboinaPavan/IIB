@@ -1,0 +1,16 @@
+
+CREATE COMPUTE MODULE SharedMsf_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		   CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+DECLARE SCount SHARED INTEGER 0;
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		--DECLARE SCount INTEGER;
+		SET SCount = SCount +1;
+		SET OutputRoot.XMLNSC.EMP.Name = 'Pavan';
+		SET OutputRoot.XMLNSC.EMP.Shared = SCount;
+	END;
+END MODULE;
