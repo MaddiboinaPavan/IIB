@@ -1,0 +1,16 @@
+
+
+Importing file: C:\Users\Administrator\Music\PraveenWorkSpace\IntegrationServices_App\IntegrationServices_App.wsdl
+
+The WSDL import will proceed with bindings IntegrationServices_AppHttpBinding.
+Creating wsdl schema document for platform:/resource/IntegrationServices_App/IntegrationServices_App.wsdl.
+Parsing wsdl binding {http://IntegrationServices_App}IntegrationServices_AppHttpBinding.
+Parsing wsdl binding input EMP_DETAILS.
+Parsing wsdl binding output EMP_DETAILS.
+Parsing wsdl binding input Student_Details.
+Parsing wsdl binding output Student_Details.
+Processing doc style for operation EMP_DETAILS.
+Processing doc style for operation Student_Details.
+Populating WSDL schema IntegrationServices_App.xsd.
+Creating file IntegrationServices_App.xsd in the workspace.
+Copying source WSDL IntegrationServices_App.wsdl to IntegrationServices_App.wsdl.

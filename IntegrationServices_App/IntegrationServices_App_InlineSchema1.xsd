@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://IntegrationServices_App" xmlns:tns="http://IntegrationServices_App">
+      <xsd:element xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" ibmSchExtn:docRoot="true" name="EMP_DETAILS">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Name" nillable="true" type="xsd:string"/>
+                <xsd:element name="ID" nillable="true" type="xsd:int"/>
+                <xsd:element name="Salary" nillable="true" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" ibmSchExtn:docRoot="true" name="EMP_DETAILSResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_NAME" nillable="true" type="xsd:string"/>
+                <xsd:element name="E_ID" nillable="true" type="xsd:int"/>
+                <xsd:element name="E_Salary" nillable="true" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    <xsd:element xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" ibmSchExtn:docRoot="true" name="Student_Details">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="NAME" nillable="true" type="xsd:string"/>
+                <xsd:element name="ID" nillable="true" type="xsd:string"/>
+                <xsd:element name="BRANCH" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+    <xsd:element xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" ibmSchExtn:docRoot="true" name="Student_DetailsResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="S_NAME" nillable="true" type="xsd:string"/>
+                <xsd:element name="S_ID" nillable="true" type="xsd:string"/>
+                <xsd:element name="S_Branch" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

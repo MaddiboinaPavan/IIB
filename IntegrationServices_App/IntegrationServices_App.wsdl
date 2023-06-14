@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="IntegrationServices_App" targetNamespace="http://IntegrationServices_App" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://IntegrationServices_App" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="IntegrationServices_AppHttpBinding" originalBindingStyle="document"/>
+        <generatedXSD location="IntegrationServices_App_InlineSchema1.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  
+  
+  
+  
+  
+  
+  <wsdl:types>
+    
+        <xsd:schema targetNamespace="http://IntegrationServices_App" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+      <xsd:include schemaLocation="IntegrationServices_App_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="EMP_DETAILSRequestMsg">
+    <wsdl:part element="tns:EMP_DETAILS" name="EMP_DETAILSParameters"/>
+  </wsdl:message>
+  <wsdl:message name="EMP_DETAILSResponseMsg">
+    <wsdl:part element="tns:EMP_DETAILSResponse" name="EMP_DETAILSResult"/>
+  </wsdl:message>
+    <wsdl:message name="Student_DetailsRequestMsg">
+    <wsdl:part element="tns:Student_Details" name="Student_DetailsParameters"/>
+  </wsdl:message>
+    <wsdl:message name="Student_DetailsResponseMsg">
+    <wsdl:part element="tns:Student_DetailsResponse" name="Student_DetailsResult"/>
+  </wsdl:message>
+    <wsdl:portType name="IntegrationServices_App">
+        <wsdl:operation name="EMP_DETAILS">
+            <wsdl:input message="tns:EMP_DETAILSRequestMsg" name="EMP_DETAILSRequest"/>
+            <wsdl:output message="tns:EMP_DETAILSResponseMsg" name="EMP_DETAILSResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="Student_Details">
+            <wsdl:input message="tns:Student_DetailsRequestMsg" name="Student_DetailsRequest"/>
+            <wsdl:output message="tns:Student_DetailsResponseMsg" name="Student_DetailsResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+  <wsdl:binding name="IntegrationServices_AppHttpBinding" type="tns:IntegrationServices_App">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="EMP_DETAILS">
+            <soap:operation soapAction="http://IntegrationServices_App/EMP_DETAILS"/>
+            <wsdl:input name="EMP_DETAILSRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="EMP_DETAILSResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+        <wsdl:operation name="Student_Details">
+            <soap:operation soapAction="http://IntegrationServices_App/Student_Details"/>
+            <wsdl:input name="Student_DetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="Student_DetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+    </wsdl:binding>
+  <wsdl:service name="IntegrationServices_AppHttpService">
+    <wsdl:port binding="tns:IntegrationServices_AppHttpBinding" name="IntegrationServices_AppHttpPort">
+      <soap:address location="http://localhost:7800/IntegrationServices_App"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

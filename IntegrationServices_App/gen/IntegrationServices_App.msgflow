@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:gen_EMP_DETAILS_Request_Response.subflow="gen/EMP_DETAILS_Request_Response.subflow" xmlns:gen_IntegrationServices_AppInputCatchHandler.subflow="gen/IntegrationServices_AppInputCatchHandler.subflow"
+    xmlns:gen_IntegrationServices_AppInputFailureHandler.subflow="gen/IntegrationServices_AppInputFailureHandler.subflow" xmlns:gen_IntegrationServices_AppInputHTTPTimeoutHandler.subflow="gen/IntegrationServices_AppInputHTTPTimeoutHandler.subflow" xmlns:gen_Student_Details_Request_Response.subflow="gen/Student_Details_Request_Response.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/IntegrationServices_App.msgflow" nsPrefix="gen_IntegrationServices_App.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="SQUARE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="IntegrationServices_App" bundleName="gen/IntegrationServices_App" pluginId="IntegrationServices_App"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/IntegrationServices_App/icons/full/obj16/IntegrationServices_App.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/IntegrationServices_App/icons/full/obj30/IntegrationServices_App.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="25,83" wsdlFileName="IntegrationServices_App.wsdl" selectedPortType="IntegrationServices_App" selectedBinding="IntegrationServices_AppHttpBinding" selectedPort="IntegrationServices_AppHttpPort" targetNamespace="http://IntegrationServices_App" useHTTPTransport="true" urlSelector="/IntegrationServices_App" allowQueryWSDL="true" extractSOAPBody="true">
+        <translation xmi:type="utility:ConstantString" string="SOAP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRouteToLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="125,158">
+        <translation xmi:type="utility:ConstantString" string="Route To Label"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="673,139">
+        <translation xmi:type="utility:ConstantString" string="SOAP Reply"/>
+      </nodes>
+      <nodes xmi:type="gen_IntegrationServices_AppInputFailureHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="269,76">
+        <translation xmi:type="utility:ConstantString" string="IntegrationServices_AppInputFailureHandler"/>
+      </nodes>
+      <nodes xmi:type="gen_IntegrationServices_AppInputHTTPTimeoutHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="220,123">
+        <translation xmi:type="utility:ConstantString" string="IntegrationServices_AppInputHTTPTimeoutHandler"/>
+      </nodes>
+      <nodes xmi:type="gen_IntegrationServices_AppInputCatchHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_6" location="240,184">
+        <translation xmi:type="utility:ConstantString" string="IntegrationServices_AppInputCatchHandler"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="49,199" labelName="EMP_DETAILS">
+        <translation xmi:type="utility:ConstantString" string="EMP_DETAILS"/>
+      </nodes>
+      <nodes xmi:type="gen_EMP_DETAILS_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_8" location="297,238">
+        <translation xmi:type="utility:ConstantString" string="EMP_DETAILS_Request_Response"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="23,265" labelName="Student_Details">
+        <translation xmi:type="utility:ConstantString" string="Student_Details"/>
+      </nodes>
+      <nodes xmi:type="gen_Student_Details_Request_Response.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="290,305">
+        <translation xmi:type="utility:ConstantString" string="Student_Details_Request_Response"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard>
+      <stickyNote location="5,5">
+        <body xmi:type="utility:ConstantString" string="This is an automatically generated message flow.&#xA;Any changes you make may be overwritten without warning.&#xA;"/>
+      </stickyNote>
+    </stickyBoard>
+  </eClassifiers>
+</ecore:EPackage>
